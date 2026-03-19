@@ -43,4 +43,4 @@ const cssToJs = () => {
   };
 };
 
-export default { plugins: [cssToJs()] };
+export default { base: "/v-scroll/", plugins: [cssToJs()] };
