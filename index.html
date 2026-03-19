@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-scroll Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: #fff;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 480px;
+        height: 600px;
+        border-left: 2px solid #ccc;
+        --vs-bar: rgba(0, 0, 0, 0.2);
+        --vs-bar-hover: rgba(0, 0, 0, 0.35);
+        --vs-bar-active: rgba(0, 0, 0, 0.5);
+        --vs-w: 7px;
+        --vs-r: 4px;
+        --vs-track: 16px;
+      }
+
+      .item {
+        padding: 14px 20px;
+        font-size: 22px;
+        font-weight: 700;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "$/": "/theme/"
+        }
+      }
+    </script>
+    <script type="module" src="/src/v-scroll.js"></script>
+  </head>
+  <body>
+    <v-scroll class="container">
+      <div id="list"></div>
+    </v-scroll>
+    <script>
+      const list = document.getElementById("list"),
+        COUNT = 100,
+        frag = document.createDocumentFragment();
+      for (let i = 0; i < COUNT; i++) {
+        const d = document.createElement("div");
+        d.className = "item";
+        d.textContent = `Welcome to vibe ${i}`;
+        frag.append(d);
+      }
+      list.append(frag);
+    </script>
+  </body>
+</html>
